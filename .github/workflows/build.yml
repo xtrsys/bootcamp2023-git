@@ -2,7 +2,9 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
 name: CI Pipeline
-
+defaults:
+  run:
+    working-directory: src
 on:
   push:
     branches: ["master"]
@@ -20,8 +22,8 @@ jobs:
         with:
           dotnet-version: 7.0.x
       - name: Restore dependencies
-        run: dotnet restore src\src.csproj
+        run: dotnet restore 
       - name: Build
-        run: dotnet build src\src.csproj --no-restore
+        run: dotnet build --no-restore
       - name: Test
-        run: dotnet test src\src.csproj --no-build --verbosity normal
+        run: dotnet test --no-build --verbosity normal
