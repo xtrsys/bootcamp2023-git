@@ -11,7 +11,7 @@ public class IndexModel : PageModel
     {
         _logger = logger;
     }
-    blbalblalsdf
+
     public void OnGet()
     {
 
