@@ -45,6 +45,13 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: .net-app
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - uses: azure/arm-deploy@v1
+        with:
+          resourceGroupName: bootcamp-resources
+          template: ./infrastructure/webapp.json
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
