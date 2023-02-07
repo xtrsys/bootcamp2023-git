@@ -26,13 +26,13 @@ jobs:
         with:
           dotnet-version: 7.0.x
       - name: dotnet publish
-        run: dotnet publish -c Release -o './myapp'
+        run: dotnet publish -c Release -o '${{ env:GITHUB_WORKSPACE }}/myapp'
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
-          path: "${{ github.GITHUB_WORKSPACE }}/myapp"
+          path: "${{ env:GITHUB_WORKSPACE }}/myapp"
   deploy:
     runs-on: windows-latest
     needs: build
